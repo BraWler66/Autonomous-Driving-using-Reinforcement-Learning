@@ -127,3 +127,8 @@ tensorboard --logdir logs/
 * OpenCV
 * TensorBoard
 * CARLA Python API
+
+## Group Members
+👥
+- **Muhammad Taqui**
+- **Babar Ali**
