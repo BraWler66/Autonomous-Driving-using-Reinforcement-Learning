@@ -1,27 +1,26 @@
-# 🚗 Autonomous-Driving-using-Reinforcement-Learning
 
+# 🚗 Autonomous Driving using Deep Q-Learning (CARLA Simulator)
 
-A Deep Q-Learning (DQN) based autonomous driving agent trained in the CARLA Simulator. The agent learns to navigate a simulated urban environment using reinforcement learning techniques.
+A Deep Q-Network (DQN) based autonomous driving agent trained in the CARLA simulator. The agent learns to drive in an urban environment using reinforcement learning.
 
----
+## 📁 Project Structure
 
-## 📂 Project Structure
-
-````
+```
 
 carla-rl-autonomous-car/
 │
-├── **pycache**/         # Python cache files
-├── logs/                # Training logs and models
-├── models/              # Saved DQN model checkpoints
+├── *pycache*/            # Python cache files
+├── logs/                 # Training logs and TensorBoard data
+├── models/               # Saved DQN model checkpoints
 │
-├── CarUI.py             # Manual driving & UI interface
-├── DQN.py               # DQN model and agent logic
-├── main.py              # Main training/evaluation script
-├── settings.py          # Hyperparameters and config
-├── Tensorboard.py       # TensorBoard logging
-├── Visual.py            # Reward plotting and visualization
-└── README.md            # Project documentation
+├── CarUI.py              # Manual driving UI using CARLA
+├── DQN.py                # Deep Q-Network model & logic
+├── main.py               # Main script for training/evaluation
+├── settings.py           # Configuration and hyperparameters
+├── Tensorboard.py        # TensorBoard launcher (optional)
+├── Visual.py             # Training reward plots
+├── LICENSE
+└── README.md
 
 ````
 
@@ -29,16 +28,16 @@ carla-rl-autonomous-car/
 
 ## 🚀 Features
 
-- 🧠 Deep Q-Learning with experience replay & target network
-- 🌆 Integration with CARLA simulator (urban driving)
-- 📊 TensorBoard for training visualization
-- 🕹 Manual driving support for testing and debugging
+- 🧠 Deep Q-Learning with experience replay and target network
+- 🌆 Urban driving using the CARLA simulator
+- 📈 Live monitoring with TensorBoard
+- 🕹 Manual driving interface for testing/debugging
 
 ---
 
 ## 🛠 Installation
 
-### Step 1: Clone and Set Up
+### Step 1: Clone and Set Up Environment
 
 ```bash
 git clone https://github.com/yourusername/carla-rl-autonomous-car.git
@@ -46,36 +45,46 @@ cd carla-rl-autonomous-car
 
 # Optional: create virtual environment
 python -m venv venv
-source venv/bin/activate    # Linux/Mac
-venv\Scripts\activate       # Windows
+source venv/bin/activate        # Linux/Mac
+venv\Scripts\activate           # Windows
 
-pip install -r requirements.txt
+# Install required packages
+pip install torch torchvision numpy opencv-python tensorboard
 ````
 
 ### Step 2: Install CARLA
 
-Download CARLA (recommended: 0.9.13 or later) from:
-[https://github.com/carla-simulator/carla/releases](https://github.com/carla-simulator/carla/releases)
+Download CARLA (recommended: version 0.9.13 or later):
 
-Follow their installation instructions for your OS.
+🔗 [https://github.com/carla-simulator/carla/releases](https://github.com/carla-simulator/carla/releases)
+
+Follow the installation steps provided for your OS.
 
 ---
 
-## 🏃 Usage
+## 🧪 How to Run
 
-### Train the Agent
-
-```bash
-python main.py --train
-```
-
-### Evaluate a Trained Model
+### ▶️ Train the Agent
 
 ```bash
-python main.py --evaluate --model models/dqn_latest.pth
+python main.py
 ```
 
-### Visualize Training Results
+*(Make sure training mode is enabled inside `main.py`)*
+
+---
+
+### 📊 Evaluate a Trained Model
+
+Make sure to load your trained model path inside the script and run:
+
+```bash
+python main.py
+```
+
+---
+
+### 📈 Visualize Rewards
 
 ```bash
 python Visual.py
@@ -83,34 +92,7 @@ python Visual.py
 
 ---
 
-## ⚙ Configuration
-
-````
-SHOW_PREVIEW = False
-IM_WIDTH = 640
-IM_HEIGHT = 480
-SECONDS_PER_EPISODE = 10
-REPLAY_MEMORY_SIZE = 5_000
-MIN_REPLAY_MEMORY_SIZE = 1_000
-MINIBATCH_SIZE = 16
-PREDICTION_BATCH_SIZE = 1
-TRAINING_BATCH_SIZE = MINIBATCH_SIZE // 4
-UPDATE_TARGET_EVERY = 5
-MODEL_NAME = "Xception"
-MEMORY_FRACTION = 0.4
-MIN_REWARD = -200
-EPISODES = 20
-DISCOUNT = 0.99
-EPSILON = 1
-EPSILON_DECAY = 0.95
-MIN_EPSILON = 0.001
-AGGREGATE_STATS_EVERY = 10
-````
----
-
-## 📊 Monitor Training
-
-Launch TensorBoard:
+### 📉 Monitor with TensorBoard
 
 ```bash
 python Tensorboard.py
@@ -118,8 +100,31 @@ python Tensorboard.py
 tensorboard --logdir logs/
 ```
 
+---
 
-## 📦 Requirements
+## ⚙ Sample Configuration (`settings.py`)
+
+```python
+SHOW_PREVIEW = False
+IM_WIDTH = 640
+IM_HEIGHT = 480
+SECONDS_PER_EPISODE = 10
+REPLAY_MEMORY_SIZE = 5000
+MIN_REPLAY_MEMORY_SIZE = 1000
+MINIBATCH_SIZE = 16
+UPDATE_TARGET_EVERY = 5
+MODEL_NAME = "Xception"
+DISCOUNT = 0.99
+EPISODES = 20
+EPSILON = 1
+EPSILON_DECAY = 0.95
+MIN_EPSILON = 0.001
+AGGREGATE_STATS_EVERY = 10
+```
+
+---
+
+## ✅ Requirements
 
 * Python 3.8+
 * PyTorch
@@ -128,7 +133,11 @@ tensorboard --logdir logs/
 * TensorBoard
 * CARLA Python API
 
-## Group Members
-👥
-- **Muhammad Taqui**
-- **Babar Ali**
+---
+
+## 👥 Group Members
+
+* **Muhammad Taqui**
+* **Babar Ali**
+
+```
