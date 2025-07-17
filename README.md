@@ -73,15 +73,6 @@ python main.py
 *(Make sure training mode is enabled inside `main.py`)*
 
 ---
-
-### 📊 Evaluate a Trained Model
-
-Make sure to load your trained model path inside the script and run:
-
-```bash
-python main.py
-```
-
 ---
 
 ### 📈 Visualize Rewards
